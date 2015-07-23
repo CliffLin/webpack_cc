@@ -1,5 +1,5 @@
-var React = require('react');
 require("./admin.css");
+var React = require("react");
 var Component = React.createClass({
   render: function () {
     return (
@@ -7,5 +7,4 @@ var Component = React.createClass({
     );
   }
 });
-
 module.exports = Component;

@@ -3,17 +3,22 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: {
-			   app:['./app/main.js'],
-		   },
+   		bundle:[path.resolve(__dirname, 'app/index.html'),
+				path.resolve(__dirname, 'app/main.js')],
+	},
+	resolve: {
+		alias: {'react':'react/dist/react.min.js'}
+	},
 	output: {
-		path: './build',
+		path: path.resolve(__dirname,'build'),
 		filename: 'bundle.js'
 	},
 	module: {
 		loaders: [
 			{ test: /\.js$/, loader: 'jsx-loader' },
 			{ test: /\.css$/, loader: "style!css"},
-			{ test: /\.(jpg|png)$/, loader: "url?limit=8192"}
+			{ test: /\.(jpg|png)$/, loader: "url?limit=8192"},
+			{ test: /\.(html)$/, loader: "file?name=[path][name].[ext]&context=./app"}
 		],
 	},
 	plugins: [ 
